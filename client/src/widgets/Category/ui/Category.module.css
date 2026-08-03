@@ -1,0 +1,33 @@
+.title {
+  font-size: 1.3rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.container {
+  scroll-margin-top: 158px;
+
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+@media (min-width: 401px) {
+  .title {
+    font-size: 1.6rem;
+  }
+}
+@media (min-width: 801px) {
+  .title {
+    font-size: 1.9rem;
+  }
+}
+
+@media (min-width: 1025px) {
+  .container {
+    scroll-margin-top: 75px;
+  }
+}

@@ -1,0 +1,25 @@
+.headerWrapper {
+  background-color: #333333;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+
+.searchBarHeaderWrapper {
+  padding-block: 10px;
+  padding-inline: var(--container-padding-inline);
+  color: white;
+}
+
+@media (min-width: 1024px) {
+  .categoriesSliderWrapper {
+    display: none;
+  }
+
+  .searchBarHeaderWrapper {
+    display: none;
+  }
+}

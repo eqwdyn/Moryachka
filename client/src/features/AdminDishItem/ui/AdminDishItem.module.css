@@ -1,0 +1,107 @@
+.item {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #eee;
+
+  display: flex;
+  flex-direction: column;
+
+  --bigFontSize: 0.9rem;
+  --smallFontSize: 0.65rem;
+}
+
+.image {
+  object-fit: cover;
+  display: block;
+  width: 100%;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
+  row-gap: 5px;
+  padding: 10px;
+  flex: 1;
+}
+
+.title {
+  font-size: var(--bigFontSize);
+  margin: 0;
+  font-weight: normal;
+  line-height: 1;
+}
+.titleCount {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  word-break: break-all;
+}
+.count {
+  font-size: var(--smallFontSize);
+  opacity: 0.7;
+}
+.description {
+  font-size: var(--smallFontSize);
+  margin: 0;
+  opacity: 0.7;
+}
+.price {
+  font-size: var(--bigFontSize);
+  color: white;
+  background-color: #ae2c2c;
+  padding-block: 5px;
+  padding-inline: 7px;
+  border-radius: 10px;
+}
+.adminButtons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 5px;
+  width: 100%;
+}
+.adminButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  border: none;
+  width: 50px;
+  aspect-ratio: 1;
+  padding: 5px;
+  background-color: #eee;
+  border-radius: 5px;
+
+  & > svg {
+    width: 100%;
+    aspect-ratio: 1;
+  }
+}
+.redactButton {
+  color: #5d78ff;
+}
+.deleteButton {
+  color: #ae2c2c;
+}
+
+@media (min-width: 395px) {
+  .titleCount {
+    word-break: normal;
+  }
+}
+@media (min-width: 500px) {
+  .body {
+    padding: 15px;
+    padding-top: 10px;
+  }
+
+  .item {
+    --bigFontSize: 1rem;
+    --smallFontSize: 0.75rem;
+  }
+}

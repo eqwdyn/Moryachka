@@ -1,0 +1,8 @@
+:root {
+  --container-max-width: 1200px;
+  --container-padding-inline: 10px;
+}
+body {
+  /* background-color: #f2f2f7; */
+  background-color: white;
+}

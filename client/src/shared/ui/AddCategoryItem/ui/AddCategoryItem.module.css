@@ -1,0 +1,36 @@
+.container {
+  width: 100%;
+  display: flex;
+  column-gap: 5px;
+  align-items: center;
+}
+
+.addButton {
+  width: 50px;
+  aspect-ratio: 1;
+
+  border: none;
+  background: none;
+  padding: 0;
+
+  & > svg {
+    width: 80%;
+    color: #227d56;
+  }
+}
+
+.title {
+  font-size: 1.3rem;
+  font-weight: normal;
+}
+
+@media (min-width: 401px) {
+  .title {
+    font-size: 1.6rem;
+  }
+}
+@media (min-width: 801px) {
+  .title {
+    font-size: 1.9rem;
+  }
+}

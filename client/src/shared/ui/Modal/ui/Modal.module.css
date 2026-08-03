@@ -1,0 +1,43 @@
+.modal {
+  position: fixed;
+  z-index: 4;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.2s ease-in opacity;
+  overflow: auto;
+
+  &[aria-hidden="false"] {
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border-radius: 20px;
+}
+
+.closeBtn {
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+
+  position: absolute;
+  top: 5px;
+  right: 7px;
+
+  width: 40px;
+  aspect-ratio: 1;
+  padding: 10px;
+}
+.closeBtn > svg {
+  aspect-ratio: 1;
+  color: black;
+}

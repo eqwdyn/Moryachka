@@ -1,0 +1,79 @@
+.container {
+  scroll-margin-top: 120px;
+
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 10px;
+}
+.form {
+  display: flex;
+  column-gap: 5px;
+  align-items: center;
+  width: 100%;
+}
+.input {
+  font-size: 1.3rem;
+  text-align: center;
+  font-weight: 600;
+  width: 100%;
+  border: none;
+  background: none;
+}
+.adminButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  border: none;
+  width: 50px;
+  aspect-ratio: 1;
+  padding: 5px;
+  background-color: #eee;
+  border-radius: 5px;
+
+  & > svg {
+    width: 100%;
+    aspect-ratio: 1;
+  }
+}
+.redactButton {
+  color: #5d78ff;
+}
+.deleteButton {
+  color: #ae2c2c;
+}
+.saveButton {
+  color: #00a632;
+  display: none;
+
+  & > svg {
+    width: 70%;
+  }
+}
+
+.input:focus + .redactButton {
+  display: none;
+}
+.input:focus ~ .saveButton {
+  display: flex;
+}
+
+@media (min-width: 401px) {
+  .input {
+    font-size: 1.6rem;
+  }
+}
+@media (min-width: 801px) {
+  .input {
+    font-size: 1.9rem;
+  }
+}
+
+@media (min-width: 1025px) {
+  .container {
+    scroll-margin-top: 75px;
+  }
+}

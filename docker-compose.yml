@@ -1,0 +1,69 @@
+services:
+  backend:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: cafe-backend
+    ports:
+      - "7000:7000"
+    environment:
+      PORT: 7000
+      NODE_ENV: production
+
+      DB_HOST: database
+      DB_PORT: 5432
+      DB_USERNAME: cafe
+      DB_PASSWORD: 90127843
+      DB_NAME: moryachka
+
+      ADMIN_LOGIN: kqwlphyc509005
+      ADMIN_PASSWORD: 450aen29mb6
+      JWT_SECRET: 4ea2fa0a-2073-4148-b9b3-db9600848f5c-asdofoasdkt-trvbxa
+
+      AWS_S3_ENDPOINT: https://s3.twcstorage.ru
+      AWS_S3_BUCKET_NAME: c0e4d041-eba7-495c-bd58-dbd184a94c09
+      AWS_ACCESS_KEY_ID: DP4XF700OZAJKMOMWSRB
+      AWS_SECRET_ACCESS_KEY: 3HMs3NtBmLHRJz97JvZznn9l5omhhMqLBaNAkq2e
+      AWS_REGION: ru-1
+    depends_on:
+      database:
+        condition: service_healthy
+    networks:
+      - app-network
+
+  frontend:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: cafe-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+  database:
+    image: postgres:15-alpine
+    container_name: cafe-db
+    environment:
+      POSTGRES_USER: cafe
+      POSTGRES_PASSWORD: 90127843
+      POSTGRES_DB: moryachka
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cafe -d moryachka"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    networks:
+      - app-network
+
+volumes:
+  pgdata:
+
+networks:
+  app-network:
+    driver: bridge

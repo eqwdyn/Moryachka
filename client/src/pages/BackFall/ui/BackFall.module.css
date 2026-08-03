@@ -1,0 +1,30 @@
+.content {
+  min-height: calc(100vh - 120px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.headerWrapper {
+  background-color: #333;
+  color: white;
+}
+.img {
+  max-width: 500px;
+  width: 100%;
+  display: block;
+}
+
+.text {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.link {
+  font-size: 2rem;
+  text-align: center;
+  color: rgb(115, 115, 255);
+  /* text */
+}
