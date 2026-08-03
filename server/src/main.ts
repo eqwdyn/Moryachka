@@ -37,7 +37,7 @@ async function bootstrap() {
   app.enableCors({
     // origin: ['https://audibly-diligent-tayra.cloudpub.ru'],
     // origin: [process.env.CLIENT_DEV_URL],
-    origin: ['http://localhost'],
+    // origin: ['http://localhost'],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
   });
