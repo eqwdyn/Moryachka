@@ -33,7 +33,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
-  //   app.setGlobalPrefix('api');
+  app.setGlobalPrefix('api');
   app.enableCors({
     // origin: ['https://audibly-diligent-tayra.cloudpub.ru'],
     // origin: [process.env.CLIENT_DEV_URL],
@@ -42,14 +42,14 @@ async function bootstrap() {
     allowedHeaders: ['Content-Type', 'Authorization'],
   });
 
-  const config = new DocumentBuilder()
-    .setTitle('Applications API')
-    .setDescription('API для Морячки')
-    .setVersion('1.0')
-    .build();
+  //   const config = new DocumentBuilder()
+  //     .setTitle('Applications API')
+  //     .setDescription('API для Морячки')
+  //     .setVersion('1.0')
+  //     .build();
 
-  const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('docs', app, document);
+  //   const document = SwaggerModule.createDocument(app, config);
+  //   SwaggerModule.setup('docs', app, document);
 
   await app.listen(PORT);
   console.log('Server has started on Port: ', PORT);

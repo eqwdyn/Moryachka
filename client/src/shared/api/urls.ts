@@ -2,9 +2,9 @@
 // export const SERVER_URL =
 //   envUrl ?? ("https://obscenely-opulent-guineapig.cloudpub.ru" as const);
 
-export const SERVER_URL = "http://localhost:7000" as const;
+// export const SERVER_URL = "http://localhost:7000" as const;
 
-// export const SERVER_URL = "/api" ;
+export const SERVER_URL = "/api";
 
 export const YA_MAPS_KEY = "6e7c1fa7-90f7-48ed-ac37-0abb3f7a8295" as const;
 export const YA_MAPS_URL = `https://api-maps.yandex.ru/3.0/?apikey=${YA_MAPS_KEY}&lang=en_RU`;
