@@ -36,7 +36,6 @@ services:
       context: ./client
       dockerfile: Dockerfile
     container_name: cafe-frontend
-    image: cafe-nginx
     volumes:
       - /var/www/certbot:/var/www/certbot:ro
       - /etc/letsencrypt:/etc/letsencrypt:ro
