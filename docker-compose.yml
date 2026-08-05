@@ -36,8 +36,13 @@ services:
       context: ./client
       dockerfile: Dockerfile
     container_name: cafe-frontend
+    image: cafe-nginx
+    volumes:
+      - /var/www/certbot:/var/www/certbot:ro
+      - /etc/letsencrypt:/etc/letsencrypt:ro
     ports:
       - "80:80"
+      - "443:443"
     depends_on:
       - backend
     networks:
