@@ -1,4 +1,4 @@
-export const dishesToInsert: {
+export const dishesSeed: {
   title: string;
   description: string;
   count: string;

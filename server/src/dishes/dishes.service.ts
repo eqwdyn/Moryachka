@@ -76,30 +76,6 @@ export class DishesService {
     return this.dishRepository.save(dish);
   }
 
-  //   async createSeed(filename: string, dto: CreateDishDto): Promise<Dish> {
-  //     const category = await this.categoryRepository.findOne({
-  //       where: { id: +dto.category_id },
-  //     });
-  //     if (!category) {
-  //       throw new NotFoundException(
-  //         `Категория с id ${dto.category_id} не найдена`,
-  //       );
-  //     }
-
-  //     const dish = this.dishRepository.create({
-  //       title: dto.title.trim(),
-  //       description: dto.description.trim(),
-  //       count: dto.count.trim(),
-  //       price: +dto.price,
-  //       image_url: filename,
-  //       category,
-  //     });
-
-  //     await this.cacheManager.clear();
-
-  //     return this.dishRepository.save(dish);
-  //   }
-
   async update(
     id: number,
     image: Express.Multer.File | undefined,

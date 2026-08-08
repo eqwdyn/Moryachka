@@ -10,8 +10,6 @@ export const CategoriesBar: FC<Props> = ({ categories }) => {
   const [activeId, setActiveId] = useState<number | null>(null);
   const observerRef = useRef<IntersectionObserver | null>(null);
 
-  useEffect(() => {}, [categories]);
-
   useEffect(() => {
     setActiveId(null);
     observerRef.current = null;

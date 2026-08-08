@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  row-gap: 10;
+}
+
+.text {
+  font-size: 1.5rem;
+}
+
+.link {
+  font-size: 2rem;
+  color: rgb(115, 115, 255);
+}

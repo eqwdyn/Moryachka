@@ -16,7 +16,6 @@ import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { CategoriesService } from './categories.service';
 import { CreateCategoryDto } from 'src/categories/dto/create-category.dto';
 import { CacheInterceptor } from '@nestjs/cache-manager';
-import { categories } from 'src/seeds/categoriesMenu';
 import { AdminGuard } from 'src/auth/auth.guard';
 
 @ApiTags('categories')
@@ -24,17 +23,6 @@ import { AdminGuard } from 'src/auth/auth.guard';
 @Controller('categories')
 export class CategoriesController {
   constructor(private readonly categoriesService: CategoriesService) {}
-
-  //   @Post('/examples')
-  //   @ApiOperation({ summary: 'Создать категории' })
-  //   @ApiResponse({ status: 201, description: 'Категории созданы' })
-  //   async createExamples() {
-  //     for (const cat of categories) {
-  //       await this.categoriesService.create(cat);
-  //     }
-
-  //     return { status: 'success' };
-  //   }
 
   @UseGuards(AdminGuard)
   @Post()

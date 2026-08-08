@@ -34,22 +34,23 @@ async function bootstrap() {
 
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
   app.setGlobalPrefix('api');
-  app.enableCors({
-    // origin: ['https://audibly-diligent-tayra.cloudpub.ru'],
-    // origin: [process.env.CLIENT_DEV_URL],
-    // origin: ['http://localhost'],
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-  });
 
-  //   const config = new DocumentBuilder()
-  //     .setTitle('Applications API')
-  //     .setDescription('API для Морячки')
-  //     .setVersion('1.0')
-  //     .build();
+  if (process.env.NODE_ENV) {
+    app.enableCors({
+      origin: [process.env.CLIENT_URL],
+      methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+      allowedHeaders: ['Content-Type', 'Authorization'],
+    });
 
-  //   const document = SwaggerModule.createDocument(app, config);
-  //   SwaggerModule.setup('docs', app, document);
+    const config = new DocumentBuilder()
+      .setTitle('Applications API')
+      .setDescription('API для Морячки')
+      .setVersion('1.0')
+      .build();
+
+    const document = SwaggerModule.createDocument(app, config);
+    SwaggerModule.setup('docs', app, document);
+  }
 
   await app.listen(PORT);
   console.log('Server has started on Port: ', PORT);

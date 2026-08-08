@@ -27,7 +27,6 @@ import { UpdateDishDto } from './dto/update-dish.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { storage } from 'src/utils';
 import { Dish } from '../entities/dish.entity';
-import { dishesToInsert } from '../seeds/dishesMenu';
 import { AdminGuard } from 'src/auth/auth.guard';
 
 @ApiTags('Dishes')
@@ -104,23 +103,6 @@ export class DishesController {
     }
     return this.dishesService.create(image, dto);
   }
-
-  //   @Post('/examples')
-  //   @ApiOperation({ summary: 'Создать категории' })
-  //   @ApiResponse({ status: 201, description: 'Категории созданы' })
-  //   async createSeed() {
-  //     for (const dish of dishesToInsert) {
-  //       await this.dishesService.createSeed('i.webp', {
-  //         title: dish.title,
-  //         description: dish.description,
-  //         count: dish.count,
-  //         category_id: dish.category_id.toString(),
-  //         price: dish.price.toString(),
-  //       });
-  //     }
-
-  //     return { status: 'success' };
-  //   }
 
   @Get()
   @ApiOperation({ summary: 'Получить список блюд' })

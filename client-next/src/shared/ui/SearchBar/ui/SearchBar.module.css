@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  column-gap: 5px;
+  align-items: center;
+  width: 100%;
+}
+.button {
+  border: none;
+  background: none;
+  width: 25px;
+  aspect-ratio: 1;
+  padding: 0;
+}
+.whiteIcon {
+  color: white;
+}
+.blackIcon {
+  color: black;
+}
+.input {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: inherit;
+  font-size: 1.125rem;
+  color: white;
+}

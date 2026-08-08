@@ -1,0 +1,51 @@
+.container {
+  padding-block: 10px;
+  overflow: hidden;
+}
+.content {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding-inline);
+  /* padding-block: 10px; */
+}
+
+.items {
+  display: flex;
+  align-items: center;
+  column-gap: 20px;
+
+  flex-wrap: nowrap;
+  overflow-x: auto;
+
+  /* --- СКРЫТИЕ СКРОЛЛБАРА --- */
+  scrollbar-width: none; /* Firefox: полностью убирает скроллбар */
+  -ms-overflow-style: none; /* IE/Edge: убирает скроллбар */
+}
+
+/* Chrome, Safari, Opera, Edge: скрываем дорожку и ползунок */
+.items::-webkit-scrollbar {
+  display: none;
+}
+
+/* Остальные стили для скролла (можно удалить, так как выше мы всё скрыли) */
+.items::-webkit-scrollbar-track {
+  background: transparent;
+}
+.items::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+.item {
+  white-space: nowrap;
+  text-decoration: none;
+  color: inherit;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+}

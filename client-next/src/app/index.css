@@ -1,0 +1,13 @@
+:root {
+  --container-max-width: 1200px;
+  --container-padding-inline: 10px;
+}
+body {
+  background-color: white;
+}
+
+@media (max-width: 375px) {
+  :root {
+    --container-padding-inline: 5px;
+  }
+}

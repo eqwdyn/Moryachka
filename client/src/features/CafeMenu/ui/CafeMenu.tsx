@@ -17,7 +17,9 @@ export const CafeMenu: FC<Props> = ({ items }) => {
     </section>
   ) : (
     <div className={cl.backFallContainer}>
-      <BackFallDishes />
+      <div style={{ width: "100%" }}>
+        <BackFallDishes />
+      </div>
     </div>
   );
 };

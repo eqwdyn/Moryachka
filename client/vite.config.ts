@@ -22,13 +22,6 @@ export default defineConfig({
     cssMinify: "lightningcss",
   },
   server: {
-    allowedHosts: ["forbiddingly-cerebral-greenshank.cloudpub.ru"],
-    port: 80,
-    // host: "0.0.0.0",
-  },
-  preview: {
-    allowedHosts: ["audibly-diligent-tayra.cloudpub.ru"],
-    port: 80,
-    // host: "0.0.0.0",
+    port: 4173,
   },
 });
