@@ -1,1 +1,0 @@
-export { CategoriesBar } from "./ui/CategoriesBar";
