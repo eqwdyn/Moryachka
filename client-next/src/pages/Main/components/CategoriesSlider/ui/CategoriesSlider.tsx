@@ -1,14 +1,12 @@
-import type { CategoryWithDishes } from "@entities/Category.ent";
+import { CategoryWithDishes } from "@/entities/Category.ent";
 import cl from "./CategoriesSlider.module.css";
 import type { FC } from "react";
 
 interface Props {
-  items: CategoryWithDishes[] | undefined;
+  items: CategoryWithDishes[];
 }
 
 export const CategoriesSlider: FC<Props> = ({ items }) => {
-  if (!items || items.length === 0) return null;
-
   return (
     <section className={cl.container}>
       <div className={cl.content}>

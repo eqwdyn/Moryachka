@@ -1,18 +1,17 @@
-import { useSearchStore } from "@/pages/Main/store/search.store";
 import { SearchBar } from "@/shared/ui/SearchBar";
 import { FC } from "react";
 
 interface Props {
   сolor?: "white" | "black";
+  value: string;
+  setValue: (v: string) => void;
 }
 
-export const SearchDishes: FC<Props> = ({ сolor }) => {
-  const { query, setQuery } = useSearchStore();
-
+export const SearchDishes: FC<Props> = ({ сolor, value, setValue }) => {
   return (
     <SearchBar
-      value={query}
-      setValue={setQuery}
+      value={value}
+      setValue={setValue}
       placeholder="Поиск блюд"
       searchColor={сolor}
     />

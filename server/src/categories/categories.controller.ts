@@ -11,6 +11,7 @@ import {
   BadRequestException,
   UseInterceptors,
   UseGuards,
+  Query,
 } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { CategoriesService } from './categories.service';
@@ -45,8 +46,16 @@ export class CategoriesController {
 
   @Get('/dishes')
   @ApiOperation({ summary: 'Получить все категории с блюдами' })
-  findAllWithDishes() {
+  searchAllWithDishes() {
+    console.log('Get request');
+
     return this.categoriesService.findAllWithDishes();
+  }
+
+  @Get('/search') // Итоговый URL: /api/categories/search?q=пицца
+  @ApiOperation({ summary: 'Получить категории с блюдами по поиску' })
+  async findAllWithDishes(@Query('query') query?: string) {
+    return this.categoriesService.searchAllWithDishes(query || '');
   }
 
   @Get(':id')

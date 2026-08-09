@@ -1,3 +1,5 @@
+"use client";
+
 import { MainPageLayout } from "@/pages/Main/components/MainPageLayout";
 import { Category } from "@/pages/Main/components/Category";
 import { Show } from "@/shared/ui/Show";
@@ -7,24 +9,51 @@ import { LoaderGate } from "@/shared/ui/LoaderGate";
 import { CategoriesNavigation } from "@/pages/Main/components/CategoriesNavigation";
 import { SearchDishes } from "@/pages/Main/components/SearchDishes";
 import { CategoryWithDishes } from "@/entities/Category.ent";
-import { FC } from "react";
+import { FC, useEffect, useMemo, useState } from "react";
+import { search } from "@/pages/Main/utils/search";
+import { CategoriesSlider } from "@/pages/Main/components/CategoriesSlider";
 
 interface Props {
-  items: CategoryWithDishes[];
+  initItems: CategoryWithDishes[];
   isLoading: boolean;
   isError: boolean;
 }
 
-export const MainPageVM: FC<Props> = ({ items, isLoading, isError }) => {
+export const MainPageVM: FC<Props> = ({ initItems, isLoading, isError }) => {
+  const [searchValue, setSearchValue] = useState<string>("");
+  const [items, setItems] = useState<typeof initItems>(() => initItems);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const result = search({
+        query: searchValue,
+        categories: initItems,
+      });
+      setItems(result);
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, [searchValue, initItems]);
   return (
     <>
       <MainPageLayout.Header>
-        <SearchDishes сolor="white" />
+        <Show when={!!items.length}>
+          <CategoriesSlider items={items} />
+        </Show>
+        <SearchDishes
+          сolor="white"
+          value={searchValue}
+          setValue={setSearchValue}
+        />
       </MainPageLayout.Header>
 
       <MainPageLayout>
         <MainPageLayout.Categories>
-          <SearchDishes сolor="black" />
+          <SearchDishes
+            сolor="black"
+            value={searchValue}
+            setValue={setSearchValue}
+          />
 
           <LoaderGate isLoading={isLoading} loaderSlot={<></>}>
             <Show when={!isError && !!items.length}>

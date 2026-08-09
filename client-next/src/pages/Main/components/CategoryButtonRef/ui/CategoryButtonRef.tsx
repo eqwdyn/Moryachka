@@ -1,3 +1,5 @@
+"use client";
+
 import type { FC, PropsWithChildren } from "react";
 import cl from "./CategoryButtonRef.module.css";
 

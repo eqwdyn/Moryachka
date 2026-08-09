@@ -1,20 +1,33 @@
 import { CategoryWithDishes } from "@/entities/Category.ent";
+import { filterEmptyCategories } from "@/pages/Main/utils/filterEmptyCategories";
 
-export function search(
-  value: string,
-  categories: CategoryWithDishes[] | undefined,
-): CategoryWithDishes[] {
-  if (!value.trim() || !categories || !categories.length)
+interface SearchProps {
+  query: string;
+  categories: CategoryWithDishes[] | undefined;
+}
+
+export function search({
+  query,
+  categories,
+}: SearchProps): CategoryWithDishes[] {
+  const trimmedQuery = query.trim();
+  if (!trimmedQuery || !categories || !categories.length)
     return categories ?? [];
 
-  const lower = value.toLowerCase();
+  const lower = trimmedQuery.toLowerCase();
+  const filtered = removeNotIncludedTitle(lower, categories);
 
-  return categories
-    .map((category) => ({
-      ...category,
-      dishes: category.dishes.filter((dish) =>
-        dish.title.toLowerCase().includes(lower),
-      ),
-    }))
-    .filter((category) => category.dishes.length > 0);
+  return filterEmptyCategories(filtered);
+}
+
+function removeNotIncludedTitle(
+  query: string,
+  categories: CategoryWithDishes[],
+): CategoryWithDishes[] {
+  return categories.map((category) => ({
+    ...category,
+    dishes: category.dishes.filter((dish) =>
+      dish.title.toLowerCase().includes(query),
+    ),
+  }));
 }
