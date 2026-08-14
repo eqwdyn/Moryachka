@@ -1,42 +1,43 @@
 "use client";
 
-import { MainPageLayout } from "@/pages/Main/components/MainPageLayout";
-import { Category } from "@/pages/Main/components/Category";
+import { FC, useState } from "react";
 import { Show } from "@/shared/ui/Show";
-import { BackFallLengthDishes } from "@/pages/Main/components/BackFallLengthDishes";
-import { BackFallErrorDishes } from "@/pages/Main/components/BackFallErrorDishes";
-import { LoaderGate } from "@/shared/ui/LoaderGate";
-import { CategoriesNavigation } from "@/pages/Main/components/CategoriesNavigation";
-import { SearchDishes } from "@/pages/Main/components/SearchDishes";
+import { CategoriesNavigation } from "@/shared/ui/CategoriesNavigation";
 import { CategoryWithDishes } from "@/entities/Category.ent";
-import { FC, useEffect, useMemo, useState } from "react";
-import { search } from "@/pages/Main/utils/search";
-import { CategoriesSlider } from "@/pages/Main/components/CategoriesSlider";
+import { search } from "@/shared/utils/search";
+import { CategoriesSlider } from "@/shared/ui/CategoriesSlider";
+import { useDebounce } from "@/shared/hooks/useDebounce";
+import { BackFallErrorDishes } from "@/shared/ui/BackFallErrorDishes";
+import { PageLayout } from "@/shared/ui/PageLayout";
+import { SearchDishes } from "@/shared/ui/SearchDishes";
+
+import { BackFallLengthDishes } from "@/pages/Main/components/BackFallLengthDishes";
+import { Category } from "@/pages/Main/components/Category";
+import { filterEmptyCategories } from "@/shared/utils/filterEmptyCategories";
 
 interface Props {
   initItems: CategoryWithDishes[];
-  isLoading: boolean;
   isError: boolean;
 }
 
-export const MainPageVM: FC<Props> = ({ initItems, isLoading, isError }) => {
+export const MainPageVM: FC<Props> = ({ initItems, isError }) => {
   const [searchValue, setSearchValue] = useState<string>("");
-  const [items, setItems] = useState<typeof initItems>(() => initItems);
+  const [items, setItems] = useState<typeof initItems>(() =>
+    filterEmptyCategories(initItems),
+  );
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      const result = search({
-        query: searchValue,
-        categories: initItems,
-      });
-      setItems(result);
-    }, 300);
+  const searchHandle = () => {
+    const result = search({
+      query: searchValue,
+      categories: initItems,
+    });
+    setItems(filterEmptyCategories(result));
+  };
 
-    return () => clearTimeout(timer);
-  }, [searchValue, initItems]);
+  useDebounce(searchHandle, 300, [searchValue, initItems]);
   return (
     <>
-      <MainPageLayout.Header>
+      <PageLayout.Header>
         <Show when={!!items.length}>
           <CategoriesSlider items={items} />
         </Show>
@@ -45,25 +46,23 @@ export const MainPageVM: FC<Props> = ({ initItems, isLoading, isError }) => {
           value={searchValue}
           setValue={setSearchValue}
         />
-      </MainPageLayout.Header>
+      </PageLayout.Header>
 
-      <MainPageLayout>
-        <MainPageLayout.Categories>
-          <SearchDishes
-            сolor="black"
-            value={searchValue}
-            setValue={setSearchValue}
-          />
+      <PageLayout>
+        <PageLayout.Layout>
+          <PageLayout.Categories>
+            <SearchDishes
+              сolor="black"
+              value={searchValue}
+              setValue={setSearchValue}
+            />
 
-          <LoaderGate isLoading={isLoading} loaderSlot={<></>}>
             <Show when={!isError && !!items.length}>
               <CategoriesNavigation categories={items} />
             </Show>
-          </LoaderGate>
-        </MainPageLayout.Categories>
+          </PageLayout.Categories>
 
-        <MainPageLayout.Menu>
-          <LoaderGate isLoading={isLoading}>
+          <PageLayout.Menu>
             <Show when={!isError && !!items.length}>
               {items.map((cat, index) => (
                 <Category
@@ -80,9 +79,9 @@ export const MainPageVM: FC<Props> = ({ initItems, isLoading, isError }) => {
             <Show when={isError}>
               <BackFallErrorDishes />
             </Show>
-          </LoaderGate>
-        </MainPageLayout.Menu>
-      </MainPageLayout>
+          </PageLayout.Menu>
+        </PageLayout.Layout>
+      </PageLayout>
     </>
   );
 };

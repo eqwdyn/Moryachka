@@ -36,6 +36,8 @@ services:
       context: ./client
       dockerfile: Dockerfile
     container_name: cafe-frontend
+    environment:
+      NODE_ENV: production
     volumes:
       - /var/www/certbot:/var/www/certbot:ro
       - /etc/letsencrypt:/etc/letsencrypt:ro

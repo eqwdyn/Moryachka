@@ -1,4 +1,4 @@
-import { DishItem } from "@/pages/Main/components/DishItem";
+import { DishItem } from "@/shared/ui/DishItem";
 import cl from "./DishesList.module.css";
 import { type FC } from "react";
 import { Dish } from "@/entities/Dish.ent";

@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { Montserrat_Alternates } from "next/font/google";
-import "./normalize.css";
-import "./index.css";
+import "./styles/normalize.css";
+import "./styles/index.css";
 import { Header } from "@/shared/ui/Header";
-import cl from "./layout.module.css";
 import Providers from "@/app/providers";
+import { BurgerSlide } from "@/shared/ui/BurgerSlide";
+import { Footer } from "@/shared/ui/Footer";
 
 const montserAlter = Montserrat_Alternates({
   weight: ["400", "600"],
@@ -26,6 +27,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <main>
           <Providers>{children}</Providers>
         </main>
+        {/* <Footer /> */}
+        <BurgerSlide />
       </body>
     </html>
   );

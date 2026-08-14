@@ -18,7 +18,7 @@ export const Modal: FC<Props> = ({ children, closeModal, isOpen }) => {
     }
   }, [isOpen]);
 
-  return createPortal(
+  return (
     <section
       aria-hidden={!isOpen}
       className={cl.modal}
@@ -36,7 +36,6 @@ export const Modal: FC<Props> = ({ children, closeModal, isOpen }) => {
           <Image src="/svg/close.svg" alt="" width={16} height={16} />
         </button>
       </div>
-    </section>,
-    document.body,
+    </section>
   );
 };

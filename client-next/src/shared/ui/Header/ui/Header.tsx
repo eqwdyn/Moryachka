@@ -13,27 +13,31 @@ export const Header = () => {
         </Link>
         <div className={cl.rightSide}>
           <div className={cl.desctop}>
-            {/* <nav className={cl.navigation}>
+            <nav className={cl.navigation}>
               <Link href="/" className={cl.link}>
                 Главная
               </Link>
-              <Link href={""} className={cl.link}>
+              <Link href="/about" className={cl.link}>
                 О нас
               </Link>
-              <Link href={ROUTES.adminPanel} className={cl.link}>
-                Admin Panel
-              </Link>
-              <Link href={ROUTES.login} className={cl.link}>
-                Admin Login
-              </Link>
-            </nav> */}
+            </nav>
             <address className={cl.contacts}>
               <a href="tel:+79780017089" className={cl.contact}>
-                <Image src={"/svg/phone.svg"} alt="" width={16} height={16} />
+                <Image
+                  src={"/svg/phone.svg"}
+                  alt="Номер телефона"
+                  width={16}
+                  height={16}
+                />
                 <span>+7 (978) 001-70-89</span>
               </a>
               <div className={cl.contact}>
-                <Image src={"/svg/max.svg"} alt="" width={16} height={16} />
+                <Image
+                  src={"/svg/max.svg"}
+                  alt="Месседжер Макс"
+                  width={16}
+                  height={16}
+                />
                 <span>+7 (978) 001-70-89</span>
               </div>
             </address>
