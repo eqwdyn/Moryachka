@@ -7,7 +7,6 @@ services:
     environment:
       NODE_ENV: production
       BACKEND_URL: http://backend:7000/api
-      # NEXT_PUBLIC_API: api
       NEXT_PUBLIC_YMAP_KEY: 6e7c1fa7-90f7-48ed-ac37-0abb3f7a8295
     depends_on:
       - backend
