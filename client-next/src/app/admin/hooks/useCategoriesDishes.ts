@@ -5,7 +5,7 @@ export function useCategoriesDishes() {
   return useQuery({
     queryKey: ["categories-with-dishes"],
     queryFn: async () => {
-      const items = await CategoriesService.findAllWithDishes();
+      const items = await CategoriesService.findAllWithDishesClient();
       return items;
     },
     staleTime: 10 * 60 * 1000,

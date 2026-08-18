@@ -7,6 +7,13 @@ export default async function Home() {
   const { isError, data } = await apiWrapper(
     CategoriesService.findAllWithDishes,
   );
+
+  //   console.log(`Server side Env: ${process.env.BACKEND_URL}`);
+  //   console.log(`Client side Env: ${process.env.NEXT_PUBLIC_API}`);
+  //   console.log(
+  //     "CATEGORIES WITH DISHES FROM BACKEND:\n",
+  //     JSON.stringify(data, null, 2),
+  //   );
   const categories = filterEmptyCategories(data ?? []);
 
   return <MainPageVM initItems={categories} isError={isError} />;

@@ -99,7 +99,6 @@ export const RedactDishModal: FC<Props> = ({ token }) => {
               id="DishNameRedactModal"
               name="title"
               defaultValue={curItem?.title}
-              required={true}
             />
           </li>
           <li className={cl.item}>
@@ -111,7 +110,6 @@ export const RedactDishModal: FC<Props> = ({ token }) => {
               id="DishCountRedactModal"
               name="count"
               defaultValue={curItem?.count}
-              required={true}
             />
           </li>
           <li className={cl.item}>
@@ -124,7 +122,6 @@ export const RedactDishModal: FC<Props> = ({ token }) => {
               name="price"
               type="number"
               defaultValue={curItem?.price}
-              required={true}
             />
           </li>
           <li className={cl.item}>
@@ -136,7 +133,6 @@ export const RedactDishModal: FC<Props> = ({ token }) => {
               id="DishDescriptionRedactModal"
               name="description"
               defaultValue={curItem?.description}
-              required={true}
             />
           </li>
           <li className={cl.item}>
@@ -150,7 +146,6 @@ export const RedactDishModal: FC<Props> = ({ token }) => {
               onChange={handleFileChange}
               id="DishImageRedactModal"
               name="image"
-              required={true}
             />
           </li>
         </ul>

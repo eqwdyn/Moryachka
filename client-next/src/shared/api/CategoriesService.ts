@@ -9,6 +9,12 @@ export class CategoriesService {
     );
     return res.data;
   }
+  static async findAllWithDishesClient(): Promise<CategoryWithDishes[]> {
+    const res = await apiCSR.get<CategoryWithDishes[]>(
+      `${CATEGORIES_API_PATH}/dishes`,
+    );
+    return res.data;
+  }
 
   /**
    * Create Category

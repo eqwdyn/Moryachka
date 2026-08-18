@@ -10,18 +10,16 @@ interface Props {
 
 export const AddCategoryItem: FC<Props> = ({ addHandle }) => {
   return (
-    <article className={cl.container}>
-      <button className={cl.addButton} onClick={addHandle}>
-        {/* <AddIcon /> */}
-        <Image
-          src="/svg/plus.svg"
-          alt="Добавить"
-          loading="eager"
-          width={50}
-          height={50}
-        />
-      </button>
+    <button className={cl.addButton} onClick={addHandle}>
+      {/* <AddIcon /> */}
+      <Image
+        src="/svg/plus.svg"
+        alt="Добавить"
+        loading="eager"
+        width={50}
+        height={50}
+      />
       <h2 className={cl.title}>Создать категорию</h2>
-    </article>
+    </button>
   );
 };
