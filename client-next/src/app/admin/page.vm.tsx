@@ -3,7 +3,7 @@
 import { Show } from "@/shared/ui/Show";
 import { CategoriesNavigation } from "@/shared/ui/CategoriesNavigation";
 import { SearchDishes } from "@/shared/ui/SearchDishes";
-import { FC, useState } from "react";
+import { FC, useMemo, useState } from "react";
 import { search } from "@/shared/utils/search";
 import { CategoriesSlider } from "@/shared/ui/CategoriesSlider";
 import { useDebounce } from "@/shared/hooks/useDebounce";
@@ -30,6 +30,8 @@ export const AdminPageVM: FC<Props> = ({ token }) => {
   const [items, setItems] = useState<CategoryWithDishes[]>(() => data ?? []);
 
   const searchHandle = () => {
+    if (!searchValue.trim()) return;
+
     const result = search({
       query: searchValue,
       categories: data,
