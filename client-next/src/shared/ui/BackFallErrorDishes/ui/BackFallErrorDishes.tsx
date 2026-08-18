@@ -11,7 +11,7 @@ export const BackFallErrorDishes = () => {
       />
       <div className={cl.text}>
         <span className={cl.span}>Произошла ошибка.</span>
-        <span className={cl.span}>Попробуйте повторить позже.</span>
+        <span className={cl.span}>Попробуйте перезагрузить страницу.</span>
       </div>
     </div>
   );

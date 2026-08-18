@@ -1,5 +1,5 @@
 import { Dish } from "@/entities/Dish.ent";
-import { api } from "@/shared/api/api.base";
+import { apiCSR } from "@/shared/api/api.base";
 import { DISHES_API_PATH } from "@/shared/config/apiPaths";
 
 export class DishesService {
@@ -18,7 +18,7 @@ export class DishesService {
       throw new Error("Missing properties while creating new dish");
     }
 
-    const res = await api.post<Dish>(DISHES_API_PATH, formData, {
+    const res = await apiCSR.post<Dish>(DISHES_API_PATH, formData, {
       headers: {
         "Content-Type": "multipart/form-data",
         Authorization: `Bearer ${token}`,
@@ -49,7 +49,7 @@ export class DishesService {
       throw new Error("Missing properties while creating new dish");
     }
 
-    const res = await api.patch<Dish>(`${DISHES_API_PATH}/${id}`, formData, {
+    const res = await apiCSR.patch<Dish>(`${DISHES_API_PATH}/${id}`, formData, {
       headers: {
         "Content-Type": "multipart/form-data",
         Authorization: `Bearer ${token}`,
@@ -63,7 +63,7 @@ export class DishesService {
    * Удалить блюдо (админка)
    */
   static async remove(id: number, token: string): Promise<void> {
-    await api.delete(`${DISHES_API_PATH}/${id}`, {
+    await apiCSR.delete(`${DISHES_API_PATH}/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

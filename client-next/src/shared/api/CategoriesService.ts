@@ -1,10 +1,10 @@
 import { Category, CategoryWithDishes } from "@/entities/Category.ent";
-import { api } from "@/shared/api/api.base";
+import { apiCSR, apiSSR } from "@/shared/api/api.base";
 import { CATEGORIES_API_PATH } from "@/shared/config/apiPaths";
 
 export class CategoriesService {
   static async findAllWithDishes(): Promise<CategoryWithDishes[]> {
-    const res = await api.get<CategoryWithDishes[]>(
+    const res = await apiSSR.get<CategoryWithDishes[]>(
       `${CATEGORIES_API_PATH}/dishes`,
     );
     return res.data;
@@ -14,7 +14,7 @@ export class CategoriesService {
    * Create Category
    */
   static async create(title: string, token: string): Promise<Category> {
-    const res = await api.post<Category>(
+    const res = await apiCSR.post<Category>(
       `${CATEGORIES_API_PATH}`,
       {
         title,
@@ -42,7 +42,7 @@ export class CategoriesService {
   }): Promise<Category> {
     if (!title.trim()) throw new Error("Unvalid value for title!");
 
-    const res = await api.patch<Category>(
+    const res = await apiCSR.patch<Category>(
       `${CATEGORIES_API_PATH}/${id}`,
       {
         title,
@@ -60,7 +60,7 @@ export class CategoriesService {
    * Remove Category
    */
   static async remove(id: number, token: string): Promise<void> {
-    await api.delete(`${CATEGORIES_API_PATH}/${id}`, {
+    await apiCSR.delete(`${CATEGORIES_API_PATH}/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

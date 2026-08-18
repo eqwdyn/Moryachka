@@ -5,7 +5,6 @@ import "./styles/index.css";
 import { Header } from "@/shared/ui/Header";
 import Providers from "@/app/providers";
 import { BurgerSlide } from "@/shared/ui/BurgerSlide";
-import { Footer } from "@/shared/ui/Footer";
 
 const montserAlter = Montserrat_Alternates({
   weight: ["400", "600"],

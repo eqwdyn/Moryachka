@@ -5,3 +5,5 @@ out
 *.md
 Dockerfile
 .dockerignore
+.env
+.env*

@@ -1,4 +1,4 @@
-import { api } from "@/shared/api/api.base";
+import { apiSSR } from "@/shared/api/api.base";
 import { CHECK_AUTH_API_PATH, LOGIN_API_PATH } from "@/shared/config/apiPaths";
 
 interface LoginDto {
@@ -20,38 +20,19 @@ interface LoginDto {
 //   status: 401,
 // }
 
-interface LoginError {
-  response: { status: number; statusText: string };
-  status: number;
-}
-
 export class AuthService {
   static async login(dto: LoginDto): Promise<{ accessToken: string }> {
-    try {
-      const { data } = await api.post<{ accessToken: string }>(
-        "/auth/login",
-        dto,
-      );
+    const { data } = await apiSSR.post<{ accessToken: string }>(
+      LOGIN_API_PATH,
+      dto,
+    );
 
-      return data;
-    } catch (e: any) {
-      console.error(JSON.stringify(e, null, 2));
-
-      if (e.status >= 500) {
-        throw new Error("Server Error");
-      } else if (e.status < 500) {
-        throw new Error("Client Error");
-      } else if (e.message === "Network Error") {
-        throw new Error("Network Error");
-      }
-
-      throw e;
-    }
+    return data;
   }
 
   static async checkAuth(token: string): Promise<boolean> {
     try {
-      await api.get(CHECK_AUTH_API_PATH, {
+      await apiSSR.get(CHECK_AUTH_API_PATH, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

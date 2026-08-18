@@ -4,12 +4,13 @@ WORKDIR /app
 
 # Копируем зависимости отдельно, чтобы кэш не ломался при каждом изменении кода
 COPY package*.json ./
-RUN npm ci --only=production
+# RUN npm ci --omit=dev
+RUN npm ci
 
 COPY . .
 
 # Build
-RUN NEXT_ENV=production npm run build
+RUN npm run build
 
 # Runtime
 FROM node:20-alpine
@@ -23,7 +24,6 @@ COPY --from=builder /app/package*.json ./
 
 
 ENV PORT=3000
-ENV NODE_ENV=production
 
 EXPOSE 3000
 
