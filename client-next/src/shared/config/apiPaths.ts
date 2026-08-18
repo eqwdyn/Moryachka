@@ -5,7 +5,7 @@
 //       : process.env.NEXT_PUBLIC_API
 //     : process.env.NEXT_PUBLIC_API;
 
-// export const SERVER_URL_CSR = process.env.NEXT_PUBLIC_API;
+export const SERVER_URL_CSR = process.env.NEXT_PUBLIC_API;
 export const SERVER_URL_SSR = process.env.BACKEND_URL;
 
 export const CATEGORIES_API_PATH = "/categories" as const;

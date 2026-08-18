@@ -30,12 +30,16 @@ export const AdminPageVM: FC<Props> = ({ token }) => {
   const [items, setItems] = useState<CategoryWithDishes[]>(() => data ?? []);
 
   const searchHandle = () => {
-    if (!searchValue.trim()) return;
+    if (!searchValue.trim()) {
+      setItems(data ?? []);
+      return;
+    }
 
     const result = search({
       query: searchValue,
       categories: data,
     });
+
     setItems(filterEmptyCategories(result));
   };
 
